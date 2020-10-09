@@ -2,6 +2,10 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components'
 import axios from 'axios'
 import { BASE_URL } from './constants/constants'
+import Search from './components/Search'
+import Character from './components/Character'
+import Button from './components/Button'
+
 
 //Styled Components
 const AppContainer = styled.div`
@@ -37,7 +41,9 @@ const App = () => {
 
   return (
     <AppContainer>
-      <h1>Characters</h1>
+      <h1>Star Wars Character Finder</h1>
+      <Search></Search>
+      <Button></Button>
     </AppContainer>
   );
 }

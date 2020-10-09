@@ -12,7 +12,7 @@ const CharacterContainer = styled.div`
 
 
 
-function Character(props) {
+export default function Character(props) {
     //Destructure Props
     const {} = props
 

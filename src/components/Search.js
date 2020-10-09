@@ -11,10 +11,7 @@ const SearchBar = styled.input`
 `; 
 
 
-
-
-
-function SearchBar(props) {
+export default function Search(props) {
     //Destructure Props
     const {} = props
 

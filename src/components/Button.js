@@ -1,6 +1,6 @@
 //Button Component
 import React from 'react'
-import Button from 'styled-components'
+import styled from 'styled-components'
 
 
 //Styled Components
@@ -15,7 +15,7 @@ const Button = styled.button`
 
 
 
-function Character(props) {
+export default function Character(props) {
     //Destructure Props
     const {} = props
 
