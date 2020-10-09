@@ -10,9 +10,11 @@ const Button = styled.button`
     padding: 1%;
     width: 50%;
     color: '#fff';
-    font-weight: 500;
-    font-size: 1.5rem;
-    background-color: '#6b1c1c';
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 2%;
+    background-color: '#6b1c1c';    
+    box-shadow: 2px 2px 10px #000;
 
     &:hover {
         transition: 0.25s ease-in-out;
@@ -27,9 +29,9 @@ const Button = styled.button`
 
 export default function Character(props) {
     //Destructure Props
-    const { onClick } = props
+    const { onClick, message } = props
 
     return (
-        <Button onClick={onClick}>Fetch Characters</Button>
+        <Button onClick={onClick}>{message}</Button>
     );
 }

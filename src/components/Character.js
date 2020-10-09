@@ -21,7 +21,7 @@ const Title = styled.div`
     max-width: 100%;
     background-color: #e3e3e3;
     border-radius: 10px 10px 0 0 ;    
-    margin-bottom: 2% 0;
+    margin-bottom: 2%;
     padding: 2%; 
     font-size: 2rem;
     font-weight: 700;
@@ -42,7 +42,13 @@ const Details = styled.section`
     justify-content: space-between;
     align-content: space-between;
     margin-bottom: 4% 0;
-    padding: 2%; 
+    padding: 4%; 
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 4px #000;
+
+    div {
+        margin: 1%;
+    }
 `;
 
 
@@ -53,16 +59,16 @@ export default function Character(props) {
     const { data } = props
     return (
         <CharacterContainer>
-            <Title><h2>{data[0]["name"]}</h2></Title>
+            <Title><h2>{data["name"]}</h2></Title>
             <Details>
-                <div>Gender: {data[0]["gender"]}</div>
-                <div>Hair Color: {data[0]["hair_color"]}</div>
-                <div>Eye Color: {data[0]["eye_color"]}  </div>
-                <div>Skin Color: {data[0]["skin_color"]}</div>
-                <div>Height: {data[0]["height"]}</div>
-                <div>Mass: {data[0]["mass"]}</div>
-                <div>Species: {data[0]["species"]}</div>
-                <div>Homeworld: {data[0]["homeworld"]}</div>
+                <div>Gender: {data["gender"]}</div>
+                <div>Hair Color: {data["hair_color"]}</div>
+                <div>Eye Color: {data["eye_color"]}  </div>
+                <div>Skin Color: {data["skin_color"]}</div>
+                <div>Height: {data["height"]}</div>
+                <div>Mass: {data["mass"]}</div>
+                <div>Species: {data["species"]}</div>
+                <div>Homeworld: {data["homeworld"]}</div>
             </Details>
         </CharacterContainer>
     );

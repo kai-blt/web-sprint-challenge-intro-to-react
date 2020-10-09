@@ -19,16 +19,18 @@ const AppContainer = styled.div`
   height: 100vh;
 
   h1 {
-    color: #443e3e;
+    color: #FFE81F;
+    font-weight: 700;
+    font-size: 4rem;
     text-shadow: 1px 1px 5px #fff;
   }
 `;
 
 const SearchContainer = styled.div`
   display: flex;
-  width: 60%;
   flex-flow: row nowrap;
   justify-content: space-between;
+  width: 60%;
 `;
 
 
@@ -37,23 +39,48 @@ const App = () => {
   //Store user's search input
   const [search, setSearch] = useState(null);
 
-  //Store Button clicked state
+  //Search Button clicked state
   const [clicked, setClicked] = useState(false);
+  
+  //Reset Button clicked state
+  const [reset, setReset] = useState(false);
 
   //Store API Data
   const [apiData, setApiData] = useState([]);
 
   //Make a call to Starwars API to fetch data based on search input
   useEffect(() => {
-    axios.get(`${BASE_URL}${search}`)
-      .then(res => {
-        setApiData(res.data.results);        
-      })
-      .catch(err => {
-        setApiData(null);
-        console.log(err);
-      })
-  }, [clicked]);
+    const getAllCharacters = () => {
+      axios.get(BASE_URL)
+        .then(res => {
+          setApiData(res.data.results);  
+          console.log(res.data.results)      
+        })
+        .catch(err => {
+          setApiData(null);
+          console.log(err);
+        })
+    }    
+  getAllCharacters();
+  }, [reset]);
+
+  useEffect(() => {
+    const getSearchedCharacters = () => {      
+      axios.get(`${BASE_URL}?search=${search}`)
+        .then(res => {
+          setApiData(res.data.results);     
+          console.log(res.data.results)      
+   
+        })
+        .catch(err => {
+          setApiData(null);
+          console.log(err);
+        })
+    }    
+    getSearchedCharacters();
+  }, [clicked])
+
+
 
   //Gets user input search value on search box change.
   const getSearchValue = (event) => {
@@ -66,10 +93,10 @@ const App = () => {
       <h1>Star Wars Character Finder</h1>
       <SearchContainer>        
         <Search type={'text'} onChange={getSearchValue}></Search>      
-        <Button onClick={() =>  setClicked(!clicked)}></Button>        
+        <Button onClick={() =>  setClicked(!clicked)} message={'Search Characters'}></Button> 
+        <Button onClick={() =>  setReset(!reset)} message={'Reset'}></Button>           
       </SearchContainer>
-      {apiData.length > 0 && <Character data={apiData} />}
-      {/* {(apiData.length === ) ? <Warning /> : null} */}
+      {apiData.map(char =>  <Character data={char} />)}
     </AppContainer>
   );
 }

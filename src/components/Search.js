@@ -6,10 +6,11 @@ import Button from './Button'
 //Styled Components
 const SearchBar = styled.input`
     width: 80%;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid #000;
     padding: 2%;
-    ${props => props.type="date"}
+    margin: 2%;
+    box-shadow: inset 2px 2px 5px #000;
 `; 
 
 
