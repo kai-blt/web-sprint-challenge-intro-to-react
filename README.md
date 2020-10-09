@@ -29,12 +29,26 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What is React JS and what problems does it solve? Support your answer with concepts introduced in class and from your personal research on the web.
+React is trying to solve the V(view) part of the MVC(model, view, controller) framework. By allowing developers to componentize ui, we can 
+more quickly develop and re-use elements. It also enables developers to store state within components.
 
 1. Describe component state.
+Component state is the means by which react components keep track of information. This state is binary so it is either on or off,
+contains one kind of information or another. This state is used by React to keep track of when to re-render the DOM and can be used 
+to trigger all kinds of functionality depending on the state of the application.
+
 
 1. Describe props.
+Props are used to pass information down in the component tree. Data only flows one way in React components and that is downward 
+through the tree. A parent may pass information down to it's children, but not the other way around. These props are used to 
+fill in information that the various components need.
+
 
 1. What are side effects, and how do you sync effects in a React component to changes of certain state or props?
+Side effects are a means to control the flow of a React component so that when a compont is re-rendered to the DOM
+you may trigger a certain effect depending on a certain state change that is being tracked or to run only once per 
+render of the component. It is all synced using the effect hook useEffect.
+
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
