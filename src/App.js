@@ -4,17 +4,31 @@ import axios from 'axios'
 import { BASE_URL } from './constants/constants'
 import Search from './components/Search'
 import Character from './components/Character'
+import Warning from './components/Warning'
 import Button from './components/Button'
 
 
 //Styled Components
 const AppContainer = styled.div`
-  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 80%;
+  margin: auto;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
 
   h1 {
     color: #443e3e;
     text-shadow: 1px 1px 5px #fff;
   }
+`;
+
+const SearchContainer = styled.div`
+  display: flex;
+  width: 60%;
+  flex-flow: row nowrap;
+  justify-content: space-between;
 `;
 
 
@@ -27,23 +41,35 @@ const App = () => {
   const [clicked, setClicked] = useState(false);
 
   //Store API Data
-  const [apiData, setApiData] = useState(null);
+  const [apiData, setApiData] = useState([]);
 
+  //Make a call to Starwars API to fetch data based on search input
   useEffect(() => {
-    axios.get(BASE_URL)
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err.data))
+    axios.get(`${BASE_URL}${search}`)
+      .then(res => {
+        setApiData(res.data.results);        
+      })
+      .catch(err => {
+        setApiData(null);
+        console.log(err);
+      })
   }, [clicked]);
 
-  // Fetch characters from the API in an effect hook. Remember, anytime you have a 
-  // side effect in a component, you want to think about which state and/or props it should
-  // sync up with, if any.
+  //Gets user input search value on search box change.
+  const getSearchValue = (event) => {
+    setSearch(event.target.value);
+  }
 
+ 
   return (
     <AppContainer>
       <h1>Star Wars Character Finder</h1>
-      <Search></Search>
-      <Button></Button>
+      <SearchContainer>        
+        <Search type={'text'} onChange={getSearchValue}></Search>      
+        <Button onClick={() =>  setClicked(!clicked)}></Button>        
+      </SearchContainer>
+      {apiData.length > 0 && <Character data={apiData} />}
+      {/* {(apiData.length === ) ? <Warning /> : null} */}
     </AppContainer>
   );
 }
