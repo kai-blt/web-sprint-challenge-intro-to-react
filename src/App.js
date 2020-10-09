@@ -21,8 +21,8 @@ const AppContainer = styled.div`
   h1 {
     color: #FFE81F;
     font-weight: 700;
-    font-size: 4rem;
-    text-shadow: 1px 1px 5px #fff;
+    font-size: 5rem;
+    text-shadow: 1px 1px 5px #000;
   }
 `;
 
