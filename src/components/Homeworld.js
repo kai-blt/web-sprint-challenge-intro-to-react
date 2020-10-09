@@ -1,7 +1,6 @@
-//Character Component
+//Homeworld Component
 import React from 'react'
 import styled, { keyframes} from 'styled-components'
-import Homeworld from './Homeworld'
 
 const fadeIn = keyframes`
     100% {
@@ -11,7 +10,7 @@ const fadeIn = keyframes`
 `;
 
 //Styled Components
-const CharacterContainer = styled.div`
+const HomeworldContainer = styled.div`
     opacity: 0;
     animation: ${fadeIn} 0.75s ease-in-out forwards;
     display: flex;
@@ -63,22 +62,13 @@ const Details = styled.section`
 
 
 
-export default function Character(props) {
+export default function Homeworld(props) {
     //Destructure Props
     const { data } = props
     return (
-        <CharacterContainer>
-            <Title><h2>{data["name"]}</h2><Homeworld data={data["homeworld"]}/></Title>
-            <Details>
-                <div>Gender: {data["gender"]}</div>
-                <div>Hair Color: {data["hair_color"]}</div>
-                <div>Eye Color: {data["eye_color"]}  </div>
-                <div>Skin Color: {data["skin_color"]}</div>
-                <div>Height: {data["height"]}</div>
-                <div>Mass: {data["mass"]}</div>
-                <div>Species: {data["species"]}</div>
-            </Details>
-        </CharacterContainer>
+        <HomeworldContainer>
+                <div>Homeworld: {data["homeworld"]}</div>       
+        </HomeworldContainer>
     );
 }
 
