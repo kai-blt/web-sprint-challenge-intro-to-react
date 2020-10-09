@@ -1,18 +1,44 @@
-import React from 'react';
-import './App.css';
+import React, {useState, useEffect} from 'react';
+import styled from 'styled-components'
+import axios from 'axios'
+import { BASE_URL } from './constants/constants'
+
+//Styled Components
+const AppContainer = styled.div`
+  text-align: center;
+
+  h1 {
+    color: #443e3e;
+    text-shadow: 1px 1px 5px #fff;
+  }
+`;
+
+
 
 const App = () => {
-  // Try to think through what state you'll need for this app before starting. Then build out
-  // the state properties here.
+  //Store user's search input
+  const [search, setSearch] = useState(null);
+
+  //Store Button clicked state
+  const [clicked, setClicked] = useState(false);
+
+  //Store API Data
+  const [apiData, setApiData] = useState(null);
+
+  useEffect(() => {
+    axios.get(BASE_URL)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err.data))
+  }, [clicked]);
 
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
   return (
-    <div className="App">
-      <h1 className="Header">Characters</h1>
-    </div>
+    <AppContainer>
+      <h1>Characters</h1>
+    </AppContainer>
   );
 }
 
